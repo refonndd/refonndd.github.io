@@ -1,34 +1,436 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Revo's Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - refonndd</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Hi, I'm Revo 👋</h1>
-    <p>Web Developer Learner & English Enthusiast</p>
-  </header>
+<body class="bg-base-100">
+    <!-- Navbar -->
+    <div class="navbar glass-effect fixed top-0 z-50 px-4 lg:px-8">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-xl gradient-text font-bold">refonndd</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 gap-2">
+                <li><a href="#home" class="hover:text-purple-400">Home</a></li>
+                <li><a href="#about" class="hover:text-purple-400">About</a></li>
+                <li><a href="#projects" class="hover:text-purple-400">Projects</a></li>
+                <li><a href="#skills" class="hover:text-purple-400">Skills</a></li>
+                <li><a href="#contact" class="hover:text-purple-400">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <label class="swap swap-rotate btn btn-ghost btn-circle">
+                <input type="checkbox" id="theme-toggle" />
+                <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+                <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
+            </label>
+            <div class="dropdown dropdown-end lg:hidden">
+                <label tabindex="0" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow glass-effect rounded-box w-52">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-  <section>
-    <h2>About Me</h2>
-    <p>I’m learning web development and love building clean, interactive websites.</p>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="avatar online mb-8 float-animation">
+                <div class="w-32 rounded-full ring ring-purple-500 ring-offset-base-100 ring-offset-2">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=refonndd" alt="Avatar" />
+                </div>
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-bold mb-4">
+                Hi, I'm <span class="gradient-text">refonndd</span>
+            </h1>
+            <p class="text-xl lg:text-2xl text-base-content/70 mb-8 max-w-2xl mx-auto">
+                Full Stack Developer & Creative Designer
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#projects" class="btn bg-gradient border-none text-white">View My Work</a>
+                <a href="#contact" class="btn btn-outline btn-primary">Get In Touch</a>
+            </div>
+            <div class="flex gap-4 justify-center mt-8">
+                <a href="https://github.com/refonndd" target="_blank" class="btn btn-circle btn-ghost">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="#" target="_blank" class="btn btn-circle btn-ghost">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="#" target="_blank" class="btn btn-circle btn-ghost">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="#">My First Project</a></li>
-      <li><a href="#">My Second Project</a></li>
-    </ul>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-12">
+                About <span class="gradient-text">Me</span>
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="card glass-effect shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl gradient-text">My Journey</h3>
+                        <p class="text-base-content/80 leading-relaxed">
+                            Saya adalah seorang developer yang passionate dalam menciptakan pengalaman digital yang menarik dan fungsional. Dengan pengalaman dalam berbagai teknologi web modern, saya selalu berusaha untuk belajar dan berkembang.
+                        </p>
+                        <p class="text-base-content/80 leading-relaxed">
+                            Saya percaya bahwa kombinasi antara desain yang baik dan kode yang clean adalah kunci untuk menciptakan produk yang luar biasa.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="stats shadow glass-effect card-hover">
+                        <div class="stat place-items-center">
+                            <div class="stat-title">Projects</div>
+                            <div class="stat-value text-purple-500">15+</div>
+                        </div>
+                    </div>
+                    <div class="stats shadow glass-effect card-hover">
+                        <div class="stat place-items-center">
+                            <div class="stat-title">Experience</div>
+                            <div class="stat-value text-purple-500">3+</div>
+                        </div>
+                    </div>
+                    <div class="stats shadow glass-effect card-hover">
+                        <div class="stat place-items-center">
+                            <div class="stat-title">Clients</div>
+                            <div class="stat-value text-purple-500">20+</div>
+                        </div>
+                    </div>
+                    <div class="stats shadow glass-effect card-hover">
+                        <div class="stat place-items-center">
+                            <div class="stat-title">Coffee</div>
+                            <div class="stat-value text-purple-500">∞</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2025 Revo</p>
-  </footer>
+    <!-- Projects Section -->
+    <section id="projects" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-12">
+                Featured <span class="gradient-text">Projects</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card glass-effect shadow-xl card-hover">
+                    <figure class="px-6 pt-6">
+                        <div class="w-full h-48 bg-gradient rounded-xl flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                    </figure>
+                    <div class="card-body">
+                        <h3 class="card-title">E-Commerce Platform</h3>
+                        <p class="text-base-content/70">Modern online store dengan payment gateway integration</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <div class="badge badge-primary">React</div>
+                            <div class="badge badge-primary">Node.js</div>
+                            <div class="badge badge-primary">MongoDB</div>
+                        </div>
+                        <div class="card-actions justify-end mt-4">
+                            <button class="btn btn-sm btn-primary">View Project</button>
+                        </div>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <div class="card glass-effect shadow-xl card-hover">
+                    <figure class="px-6 pt-6">
+                        <div class="w-full h-48 bg-gradient rounded-xl flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                    </figure>
+                    <div class="card-body">
+                        <h3 class="card-title">Mobile App Design</h3>
+                        <p class="text-base-content/70">UI/UX design untuk aplikasi mobile modern</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <div class="badge badge-secondary">Figma</div>
+                            <div class="badge badge-secondary">UI/UX</div>
+                            <div class="badge badge-secondary">Mobile</div>
+                        </div>
+                        <div class="card-actions justify-end mt-4">
+                            <button class="btn btn-sm btn-secondary">View Project</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card glass-effect shadow-xl card-hover">
+                    <figure class="px-6 pt-6">
+                        <div class="w-full h-48 bg-gradient rounded-xl flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                    </figure>
+                    <div class="card-body">
+                        <h3 class="card-title">Data Dashboard</h3>
+                        <p class="text-base-content/70">Interactive dashboard untuk visualisasi data</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <div class="badge badge-accent">Vue.js</div>
+                            <div class="badge badge-accent">Chart.js</div>
+                            <div class="badge badge-accent">API</div>
+                        </div>
+                        <div class="card-actions justify-end mt-4">
+                            <button class="btn btn-sm btn-accent">View Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-12">
+                My <span class="gradient-text">Skills</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card glass-effect shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl mb-4">Frontend</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>HTML/CSS</span>
+                                    <span>95%</span>
+                                </div>
+                                <progress class="progress progress-primary" value="95" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>JavaScript</span>
+                                    <span>90%</span>
+                                </div>
+                                <progress class="progress progress-primary" value="90" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>React</span>
+                                    <span>85%</span>
+                                </div>
+                                <progress class="progress progress-primary" value="85" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Tailwind CSS</span>
+                                    <span>92%</span>
+                                </div>
+                                <progress class="progress progress-primary" value="92" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card glass-effect shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-2xl mb-4">Backend</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Node.js</span>
+                                    <span>88%</span>
+                                </div>
+                                <progress class="progress progress-secondary" value="88" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Python</span>
+                                    <span>82%</span>
+                                </div>
+                                <progress class="progress progress-secondary" value="82" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>MongoDB</span>
+                                    <span>80%</span>
+                                </div>
+                                <progress class="progress progress-secondary" value="80" max="100"></progress>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>PostgreSQL</span>
+                                    <span>78%</span>
+                                </div>
+                                <progress class="progress progress-secondary" value="78" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-4xl mx-auto w-full">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-12">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+            <div class="card glass-effect shadow-xl">
+                <div class="card-body">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="label">
+                                <span class="label-text">Name</span>
+                            </label>
+                            <input type="text" placeholder="Your name" class="input input-bordered w-full" />
+                        </div>
+                        <div>
+                            <label class="label">
+                                <span class="label-text">Email</span>
+                            </label>
+                            <input type="email" placeholder="your@email.com" class="input input-bordered w-full" />
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label class="label">
+                            <span class="label-text">Subject</span>
+                        </label>
+                        <input type="text" placeholder="Project inquiry" class="input input-bordered w-full" />
+                    </div>
+                    <div class="mt-4">
+                        <label class="label">
+                            <span class="label-text">Message</span>
+                        </label>
+                        <textarea class="textarea textarea-bordered w-full h-32" placeholder="Your message..."></textarea>
+                    </div>
+                    <div class="card-actions justify-end mt-6">
+                        <button class="btn bg-gradient border-none text-white">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 glass-effect text-base-content">
+        <div>
+            <p class="font-bold text-xl gradient-text">refonndd</p>
+            <p>Crafting digital experiences with passion</p>
+        </div>
+        <div>
+            <div class="grid grid-flow-col gap-4">
+                <a href="https://github.com/refonndd" target="_blank" class="btn btn-ghost btn-circle">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="#" target="_blank" class="btn btn-ghost btn-circle">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <p>Copyright © 2025 - Made with ❤️ by refonndd</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = savedTheme === 'light';
+        
+        themeToggle.addEventListener('change', () => {
+            const newTheme = themeToggle.checked ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
